@@ -218,6 +218,7 @@ function printVal() {
 	document.getElementById("no_pertanyaan").innerHTML = "Item " + filename;
 	filename = filename.toString();
 	filename += ".wav";
+	filename = "audio/" + filename;
 	document.getElementById("suara").setAttribute('src', filename);
 	playSound();
 	document.getElementById('Linput').value = "3";
