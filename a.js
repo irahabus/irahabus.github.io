@@ -243,35 +243,45 @@ function displayAkhir() {
 }
 
 function saveTextAsFile() {
-	var header = "Nama" + "," + nama + "\n"
-	header += "Sekolah" + "," + sekolah + "\n"
-	header += "Kelas" + "," + kelas + "\n"
-	header += "Tanggal Lahir" + "," + dobDay + "-" + dobMonth + "-" + dobYear + "\n"
-	header += "Jenis Kelamin" + "," + jeniskelamin + "\n"
-	header += "No Pertanyaan,Jawab L,Jawab P" + "\n"
-	var textToWrite = header + str;
-	var textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
-	var fileNameToSaveAs = nama + "_Hasil_Kuesioner.csv";
+    // Header for the CSV file
+    var header = "Nama,Sekolah,Kelas,Tanggal Lahir,Jenis Kelamin,No Pertanyaan,";
+    // Adding dynamic headers based on the number of questions
+    for (let i = 1; i <= q.length; i++) {
+        header += `Q${i} L,Q${i} P,`;
+    }
+    header += "\n";
 
-	var downloadLink = document.createElement("a");
-	downloadLink.download = fileNameToSaveAs;
-	downloadLink.innerHTML = "Download File";
-	if (window.webkitURL != null) {
-		// Chrome allows the link to be clicked
-		// without actually adding it to the DOM.
-		downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
-	}
-	else {
-		// Firefox requires the link to be added to the DOM
-		// before it can be clicked.
-		downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-		downloadLink.onclick = destroyClickedElement;
-		downloadLink.style.display = "none";
-		document.body.appendChild(downloadLink);
-	}
+    // Preparing data rows for 'L' and 'P'
+    var dataRows = nama + "," + sekolah + "," + kelas + "," + dobDay + "-" + dobMonth + "-" + dobYear + "," + jeniskelamin + ",Jawaban,";
 
-	downloadLink.click();
+    // Split the accumulated answers into an array
+    var answers = str.split("\n");
+    for (let i = 0; i < q.length; i++) {
+        const parts = answers[i] ? answers[i].split(",") : [i + 1, "", ""];
+        dataRows += `${parts[1]},${parts[2]},`;
+    }
+
+    // Combine header and data rows
+    var textToWrite = header + "\n" + dataRows;
+
+    // Create a Blob with the CSV data
+    var textFileAsBlob = new Blob([textToWrite], { type: 'text/csv' });
+    var fileNameToSaveAs = nama + "_Hasil_Kuesioner_Pivoted.csv";
+
+    // Create a download link and trigger the download
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    if (window.webkitURL != null) {
+        downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+    } else {
+        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+    }
+
+    downloadLink.click();
 }
+
 
 function destroyClickedElement(event) {
 	document.body.removeChild(event.target);
