@@ -8,6 +8,51 @@
 		Kuesioner
 	</title>
 	<script src="a.js"></script>
+	<style>
+        .instruction-container {
+            display: block;
+            margin: auto;
+            padding: 20px;
+            width: 80%;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .instruction-container h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        .instruction-container video {
+            display: block;
+            margin: 20px auto;
+            width: 50%; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        .instruction-container p {
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+        .instruction-container input[type="button"] {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .instruction-container input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 
 <body>
@@ -218,40 +263,50 @@
 		</table>
 		<br/>
 		</div>
-		<div style="display:none" id="instruksi">
-			<h3>Instruksi tes BFRT versi komputer</h3>
-			
-				<!--<video id="vid" controls loop class='center' width="432" height="656">
-					!<source src="instruksi.ogv" type="video/ogg">
-				</video>-->
-				Saat ini, anda berpartisipasi dalam penelitian mengenai relasi dalam keluarga.<br/>Jawaban anda akan terekam dalam komputer. <br/>Pertama-tama anda diminta untuk memilih gambar yang paling menggambarkan
-	ayah dan ibu anda.<br/> Gambar ayah dan ibu anda akan digunakan untuk membayangkan relasi anda dengan ayah dan ibu
-	anda dalam pernyataan tertulis dan dibacakan.<br/> Tugas anda nanti adalah adalah menandai termometer sesuai dengan
-	jawaban anda terkait dengan relasi anda dengan ayah dan ibu, dengan cara menggeser mouse dari bagian tengah termometer ke
-	atas atau ke bawah.<br/>Pilihan jawaban berkisar dari YA (termometer atas) sampai dengan TIDAK (termometer bagian
-	bawah)
-	<br/>Bila Anda menganggap pernyataan tersebut menggambarkan relasi anda dengan ayah atau ibu, anda bisa menggerakan
-	mouse mulai dari titik tengah komputer sampai ujung atas termometer (YA). Berhentilah pada posisi yang sesuai. Makin ke
-	atas, makin sesuai.<br/>
-	 Bila Anda menganggap pernyataan tersebut menggambarkan relasi anda dengan ayah atau ibu, anda bisa menggerakan
-	mouse mulai dari titik tengah komputer sampai ujung bawah termometer (TIDAK). Berhentilah pada posisi yang sesuai. Makin
-	ke bawah, makin tidak sesuai.<br/> Bila anda tidak dapat membuat keputusan mengenai pernyataan tersebut, anda tidak
-	perlu menggeser mouse dan tempatkan di tengah termometer.<br/> Setiap kali anda selesai memberikan jawaban anda, klik
-	OK untuk melanjutkan pernyataan berikut.<br/> Anda baru berhenti ketika ada ucapan TERIMA KASIH. Mari kita mulai dengan contoh:<br/>
-				
-				<!-- <object width="900" height="500">
-					<param name="movie" value="instruksi.swf">
-					<embed src="instruksi.swf">
-					</embed>
-				</object>
-				<audio controls>
-					<source src="instruksi.wav" type="audio/wav">
-					Your browser does not support the audio element.
-				  </audio> -->
-				<br/>
-				Bila anda sudah siap, silahkan klik MULAI.
-			<input type="button" onclick="setnama()" value="MULAI" />
-		</div>
+		<div style="display:none" id="instruksi" class="instruction-container">
+            <h3>Instruksi tes BFRT versi komputer</h3>
+            
+            <!-- Video instruction section -->
+            <video id="vid" controls loop width="432" height="656">
+                <source src="instruksi.mp4" type="video/mp4">
+                <source src="instruksi.webm" type="video/webm">
+                <source src="instruksi.ogv" type="video/ogg">
+                Your browser does not support the video tag.
+            </video>
+            
+            <p>
+                Saat ini, anda berpartisipasi dalam penelitian mengenai relasi dalam keluarga. Jawaban anda akan terekam
+                dalam komputer. Pertama-tama anda diminta untuk memilih gambar yang paling menggambarkan ayah dan ibu
+                anda. Gambar ayah dan ibu anda akan digunakan untuk membayangkan relasi anda dengan ayah dan ibu anda
+                dalam pernyataan tertulis dan dibacakan. Tugas anda nanti adalah adalah menandai termometer sesuai dengan
+                jawaban anda terkait dengan relasi anda dengan ayah dan ibu, dengan cara menggeser mouse dari bagian tengah
+                termometer ke atas atau ke bawah. Pilihan jawaban berkisar dari YA (termometer atas) sampai dengan TIDAK
+                (termometer bagian bawah).
+            </p>
+            <p>
+                Bila Anda menganggap pernyataan tersebut menggambarkan relasi anda dengan ayah atau ibu, anda bisa
+                menggerakan mouse mulai dari titik tengah komputer sampai ujung atas termometer (YA). Berhentilah pada posisi
+                yang sesuai. Makin ke atas, makin sesuai. Bila Anda menganggap pernyataan tersebut menggambarkan relasi
+                anda dengan ayah atau ibu, anda bisa menggerakan mouse mulai dari titik tengah komputer sampai ujung bawah
+                termometer (TIDAK). Berhentilah pada posisi yang sesuai. Makin ke bawah, makin tidak sesuai. Bila anda
+                tidak dapat membuat keputusan mengenai pernyataan tersebut, anda tidak perlu menggeser mouse dan tempatkan di
+                tengah termometer. Setiap kali anda selesai memberikan jawaban anda, klik OK untuk melanjutkan pernyataan
+                berikut. Anda baru berhenti ketika ada ucapan TERIMA KASIH. Mari kita mulai dengan contoh:
+            </p>
+            
+            <!-- <object width="900" height="500">
+                <param name="movie" value="instruksi.swf">
+                <embed src="instruksi.swf">
+                </embed>
+            </object>
+            <audio controls>
+                <source src="instruksi.wav" type="audio/wav">
+                Your browser does not support the audio element.
+              </audio> -->
+            <p>Bila anda sudah siap, silahkan klik MULAI.</p>
+            <input type="button" onclick="setnama()" value="MULAI" />
+        </div>
+		
 		<div style="display:none" id="pilih_L">
 			<h1>Instruksi: Pilih salah satu gambar yang mirip dengan figur Ayah</h1><br/>
 			<img width="150" height="350" onclick="setimg(0,1)" src="L/1.jpg">
