@@ -82,6 +82,8 @@ udahDua = 0;
 curQ = 0;
 str = ""
 
+let answersArray = new Array(q.length).fill([null, null]);
+
 function testa() {
 	var s = "";
 	for (var i = 0; i < 3 - 1; i++) {
@@ -154,7 +156,6 @@ function setnama() {
 	document.getElementById("vid").pause();
 }
 
-
 function showimg() {
 	L = document.getElementById("L");
 	L.setAttribute('style', 'display:true');
@@ -187,88 +188,60 @@ function setimg(gender, id) {
 }
 
 function printVal() {
-	let jwbL = "";
-	let jwbP = "";
-	jwbL = document.getElementById('Linput').value
-	jwbP = document.getElementById('Pinput').value
-
-	if (jwbL === "" && jwbP === "") {
-		alert('Jawaban kuesioner belum ada yang diisi.');
-		return
-	}
-	if (jwbL === "") {
-		alert('Jawaban untuk ayah belum diisi.');
-		return
-	}
-	if (jwbP === "") {
-		alert('Jawaban untuk ibu belum diisi.');
-		return
-	}
-	var noPertanyaan = curQ + 1;
-	str += noPertanyaan + "," + (jwbL.toString()) + "," + (jwbP.toString()) + "\n";
-	if (noPertanyaan >= 67) {
+	saveCurrentAnswer();
+	if (curQ >= q.length - 1) {
 		displayAkhir();
 		saveTextAsFile();
 		return;
 	}
 	curQ++;
+	loadQuestion(curQ);
+}
 
-	document.getElementById("pertanyaan").innerHTML = q[curQ];
-	var filename = curQ + 1;
-	document.getElementById("no_pertanyaan").innerHTML = "Item " + filename;
-	filename = filename.toString();
-	filename += ".wav";
+function previousVal() {
+	saveCurrentAnswer();
+	if (curQ > 0) {
+		curQ--;
+		loadQuestion(curQ);
+	}
+}
+
+function saveCurrentAnswer() {
+	let jwbL = document.getElementById('Linput').value;
+	let jwbP = document.getElementById('Pinput').value;
+	answersArray[curQ] = [jwbL, jwbP];
+}
+
+function loadQuestion(index) {
+	document.getElementById("pertanyaan").innerHTML = q[index];
+	document.getElementById("no_pertanyaan").innerHTML = "Item " + (index + 1);
+	document.getElementById('Linput').value = answersArray[index][0] !== null ? answersArray[index][0] : "3";
+	document.getElementById('Pinput').value = answersArray[index][1] !== null ? answersArray[index][1] : "3";
+
+	var filename = (index + 1) + ".wav";
 	filename = "audio/" + filename;
 	document.getElementById("suara").setAttribute('src', filename);
 	playSound();
-	document.getElementById('Linput').value = "3";
-	document.getElementById('Pinput').value = "3";
-}
-
-function printValueL(val) {
-	document.getElementById("skor_L").innerHTML = val;
-}
-
-function printValueL() {
-	document.getElementById("skor_P").innerHTML = document.getElementById("P_meter").value;
-}
-
-function asd() {
-	alert(q);
-}
-
-function displayAkhir() {
-	document.getElementById("postMilih").setAttribute('style', 'display:none');
-	document.getElementById("akhir").setAttribute('style', 'display:true');
 }
 
 function saveTextAsFile() {
-    // Header for the CSV file
     var header = "Nama,Sekolah,Kelas,Tanggal Lahir,Jenis Kelamin,No Pertanyaan,";
-    // Adding dynamic headers based on the number of questions
     for (let i = 1; i <= q.length; i++) {
         header += `Q${i} L,Q${i} P,`;
     }
     header += "\n";
 
-    // Preparing data rows for 'L' and 'P'
-    var dataRows = nama + "," + sekolah + "," + kelas + "," + dobDay + "-" + dobMonth + "-" + dobYear + "," + jeniskelamin + ",Jawaban,";
+    var dataRows = `${nama},${sekolah},${kelas},${dobDay}-${dobMonth}-${dobYear},${jeniskelamin},Jawaban,`;
 
-    // Split the accumulated answers into an array
-    var answers = str.split("\n");
     for (let i = 0; i < q.length; i++) {
-        const parts = answers[i] ? answers[i].split(",") : [i + 1, "", ""];
-        dataRows += `${parts[1]},${parts[2]},`;
+        const parts = answersArray[i];
+        dataRows += `${parts[0] !== null ? parts[0] : ""},${parts[1] !== null ? parts[1] : ""},`;
     }
 
-    // Combine header and data rows
     var textToWrite = header + "\n" + dataRows;
-
-    // Create a Blob with the CSV data
     var textFileAsBlob = new Blob([textToWrite], { type: 'text/csv' });
-    var fileNameToSaveAs = nama + "_Hasil_Kuesioner_Pivoted.csv";
+    var fileNameToSaveAs = `${nama}_Hasil_Kuesioner_Pivoted.csv`;
 
-    // Create a download link and trigger the download
     var downloadLink = document.createElement("a");
     downloadLink.download = fileNameToSaveAs;
     if (window.webkitURL != null) {
@@ -282,7 +255,12 @@ function saveTextAsFile() {
     downloadLink.click();
 }
 
+function playSound() {
+    var thissound = document.getElementById("suara");
+    thissound.play();
+}
 
-function destroyClickedElement(event) {
-	document.body.removeChild(event.target);
+function displayAkhir() {
+    document.getElementById("postMilih").style.display = 'none';
+    document.getElementById("akhir").style.display = 'block';
 }
