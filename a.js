@@ -22,7 +22,7 @@ q = [
 	"Ketika saya menghibur orang ini, dia menjadi senang kembali",
 	"Apapun yang saya lakukan, orang ini tetap tidak merasa puas pada saya",
 	"Orang ini mengatakan bahwa saya dapat menolongnya dengan baik",
-	"Saya sering ber-senang2 dengan orang ini",
+	"Saya sering bersenang-senang dengan orang ini",
 	"Orang ini sering menguasai saya",
 	"Saya senang apabila orang ini berada dekat saya",
 	"Saya membantu orang ini ketika dia bertengkar dengan seseorang dirumah",
