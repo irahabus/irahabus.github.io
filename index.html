@@ -11,48 +11,55 @@
     <script src="a.js"></script>
     <style>
         .instruction-container {
-            display: block;
-            margin: auto;
-            padding: 20px;
-            width: 80%;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            text-align: left;
-        }
-
-        .instruction-container h3 {
-            text-align: center;
-            color: #333;
-        }
-
-        .instruction-container video {
-            display: block;
-            margin: 20px auto;
-            width: 50%;
-            height: auto;
-        }
-
-        .instruction-container p {
-            text-align: justify;
-            line-height: 1.6;
-        }
-
-        .instruction-container input[type="button"] {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .instruction-container input[type="button"]:hover {
-            background-color: #0056b3;
-        }
+			display: block;
+			margin: 20px auto;
+			padding: 15px;
+			width: 75%;
+			background-color: #f9f9f9;
+			border: 1px solid #ddd;
+			border-radius: 10px;
+			text-align: left;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+		
+		.instruction-container h3 {
+			text-align: center;
+			color: #333;
+			margin-bottom: 10px;
+		}
+		
+		.instruction-container video {
+			display: block;
+			margin: 15px auto;
+			width: 60%;
+			height: auto;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+		}
+		
+		.instruction-container p {
+			text-align: justify;
+			line-height: 1.5;
+			font-size: 14px;
+			margin-bottom: 10px;
+		}
+		
+		.instruction-container input[type="button"] {
+			display: block;
+			margin: 20px auto;
+			padding: 10px 20px;
+			font-size: 16px;
+			background-color: #007bff;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+		
+		.instruction-container input[type="button"]:hover {
+			background-color: #0056b3;
+		}
     </style>
 </head>
 
@@ -264,46 +271,46 @@
             <br />
         </div>
         <div style="display:none" id="instruksi" class="instruction-container">
-            <h3>INSTRUKSI TES RELASI KELUARGA-BANDUNG VERSI KOMPUTER</h3>
-            <p>
-                - Saat ini, Kamu berpartisipasi dalam penelitian mengenai relasi dalam keluarga.
-                - Jawaban kamu akan terekam dalam komputer.
-                - Pertama-tama kamu diminta untuk memilih gambar yang paling menggambarkan Ayah dan ibu Kamu.
-                Gambar Ayah dan Ibu akan digunakan untuk membayangkan relasi Kamu dengan Ayah dan Ibu dalam pernyataan tertulis dan dibacakan.
-            </p>
-            <p>
-                - Contoh pernyataan tertulis adalah sebagai berikut : “Aku senang bermain dengan Orang Ini”. Yang dimaksud dengan “Orang Ini” adalah Ayah dan Ibu Kamu.
-            </p>
-            <p>
-                - Tugas kamu nanti adalah menandai termometer sesuai dengan jawaban kamu, terkait dengan relasinya dengan Ayah dan Ibu dengan cara menggeser mouse dari bagian tengah termometer ke atas atau ke bawah.
-            </p>
-            <p>
-                - Pilihan jawaban berkisar dari YA (bagian atas termometer) sampai dengan Tidak (bagian bawah termometer).
-            </p>
-            <p>
-                • Bila kamu menganggap pernyataan tersebut menggambarkan relasinya dengan Ayah atau Ibu, maka bisa menggerakkan mouse mulai dari titik tengah termometer sampai ujung atas thermometer (Ya). Berhenti lah pada posisi yang sesuai. Makin ke atas makin sesuai. Misalnya saat kamu senang bermain dengan Ayah dan Ibu kamu.
-            </p>
-            <p>
-                • Bila kamu menganggap pernyataan tersebut Tidak menggambarkan relasinya dengan Ayah atau Ibu, maka bisa menggerakkan mouse mulai dari titik tengah termometer sampai ujung bawah thermometer (Tidak). Berhentilah pada posisi yang sesuai. makin ke bawah makin tidak sesuai. Misalnya saat kamu tidak senang bermain dengan Ayah dan Ibu kamu.
-            </p>
-            <p>
-                • Bila kamu tidak dapat membuat keputusan mengenai pernyataan tersebut, maka tidak perlu menggeser mouse dan tempatkan di tengah thermometer.
-            </p>
-            <p>
-                - Setiap kali kamu selesai memberikan jawaban, kemudian klik tombol “SELANJUTNYA” untuk pengisian pernyataan berikutnya.
-                - Jika kamu ingin mengubah jawaban pernyataan sebelumnya maka klik tombol “SEBELUMNYA”
-                - Kamu baru berhenti ketika ada ucapan “TERIMA KASIH”
-                - Mari kita mulai dengan contoh
-                - Bila Kamu sudah siap, silahkan klik “MULAI”
-            </p>
-            <video id="vid" controls loop width="432" height="656">
-                <source src="instruksi.mp4" type="video/mp4">
-                <source src="instruksi.webm" type="video/webm">
-                <source src="instruksi.ogv" type="video/ogg">
-                Your browser does not support the video tag.
-            </video>
-            <input type="button" onclick="setnama()" value="MULAI" />
-        </div>
+			<h3>INSTRUKSI TES RELASI KELUARGA-BANDUNG VERSI KOMPUTER</h3>
+			<p>
+				- Saat ini, Kamu berpartisipasi dalam penelitian mengenai relasi dalam keluarga.
+				- Jawaban kamu akan terekam dalam komputer.
+				- Pertama-tama kamu diminta untuk memilih gambar yang paling menggambarkan Ayah dan ibu Kamu.
+				Gambar Ayah dan Ibu akan digunakan untuk membayangkan relasi Kamu dengan Ayah dan Ibu dalam pernyataan tertulis dan dibacakan.
+			</p>
+			<p>
+				- Contoh pernyataan tertulis adalah sebagai berikut : “Aku senang bermain dengan Orang Ini”. Yang dimaksud dengan “Orang Ini” adalah Ayah dan Ibu Kamu.
+			</p>
+			<p>
+				- Tugas kamu nanti adalah menandai termometer sesuai dengan jawaban kamu, terkait dengan relasinya dengan Ayah dan Ibu dengan cara menggeser mouse dari bagian tengah termometer ke atas atau ke bawah.
+			</p>
+			<p>
+				- Pilihan jawaban berkisar dari YA (bagian atas termometer) sampai dengan Tidak (bagian bawah termometer).
+			</p>
+			<p>
+				• Bila kamu menganggap pernyataan tersebut menggambarkan relasinya dengan Ayah atau Ibu, maka bisa menggerakkan mouse mulai dari titik tengah termometer sampai ujung atas thermometer (Ya). Berhenti lah pada posisi yang sesuai. Makin ke atas makin sesuai. Misalnya saat kamu senang bermain dengan Ayah dan Ibu kamu.
+			</p>
+			<p>
+				• Bila kamu menganggap pernyataan tersebut Tidak menggambarkan relasinya dengan Ayah atau Ibu, maka bisa menggerakkan mouse mulai dari titik tengah termometer sampai ujung bawah thermometer (Tidak). Berhentilah pada posisi yang sesuai. makin ke bawah makin tidak sesuai. Misalnya saat kamu tidak senang bermain dengan Ayah dan Ibu kamu.
+			</p>
+			<p>
+				• Bila kamu tidak dapat membuat keputusan mengenai pernyataan tersebut, maka tidak perlu menggeser mouse dan tempatkan di tengah thermometer.
+			</p>
+			<p>
+				- Setiap kali kamu selesai memberikan jawaban, kemudian klik tombol “SELANJUTNYA” untuk pengisian pernyataan berikutnya.
+				- Jika kamu ingin mengubah jawaban pernyataan sebelumnya maka klik tombol “SEBELUMNYA”
+				- Kamu baru berhenti ketika ada ucapan “TERIMA KASIH”
+				- Mari kita mulai dengan contoh
+				- Bila Kamu sudah siap, silahkan klik “MULAI”
+			</p>
+			<video id="vid" controls loop width="432" height="656">
+				<source src="instruksi.mp4" type="video/mp4">
+				<source src="instruksi.webm" type="video/webm">
+				<source src="instruksi.ogv" type="video/ogg">
+				Your browser does not support the video tag.
+			</video>
+			<input type="button" onclick="setnama()" value="MULAI" />
+		</div>
 
         <div style="display:none" id="pilih_L">
             <h1>Instruksi: Pilih salah satu gambar yang mirip dengan figur Ayah</h1><br />
