@@ -48,6 +48,12 @@ q = [
     "Saya sering merasa puas saat bersama-sama dengan orang ini"
 ];
 
+let negativeQuestions = [3, 9, 15, 21, 27, 39, 44]; // List of negative question indices
+
+function reverseScore(score) {
+    return 6 - score;
+}
+
 let answersArray = new Array(q.length).fill([null, null, null]); // Adding an additional field for time taken
 
 let nama = "";
@@ -191,6 +197,12 @@ function saveCurrentAnswer() {
     let jwbL = document.getElementById('Linput').value;
     let jwbP = document.getElementById('Pinput').value;
     let timeTaken = getTimeTaken();
+
+    if (negativeQuestions.includes(curQ)) {
+        jwbL = reverseScore(jwbL);
+        jwbP = reverseScore(jwbP);
+    }
+
     answersArray[curQ] = [jwbL, jwbP, timeTaken];
     clearInterval(timerInterval);
 }
@@ -211,7 +223,7 @@ function loadQuestion(index) {
 function saveTextAsFile() {
     var header = "Nama,Sekolah,Kelas,Tanggal Lahir,Jenis Kelamin,No Pertanyaan,";
     for (let i = 1; i <= q.length; i++) {
-        header += `Q${i} L,Q${i} P,Q${i} Time,`;
+        header += `Q${i} F,Q${i} M,Q${i} Time,`;
     }
     header += "\n";
 
