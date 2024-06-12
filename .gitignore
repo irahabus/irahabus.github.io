@@ -1,3 +1,7 @@
+# nyc test coverage
+csv-files/
+*.csv
+
 # Node modules
 node_modules/
 
