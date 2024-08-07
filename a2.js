@@ -10,6 +10,7 @@ let q = [
     "Kadang-kadang sulit bagi saya untuk menyukai orang ini.",
     "Orang ini dan saya memiliki kesamaan tentang hal-hal yang kami anggap bagus.",
     "Saya senang apabila saya dapat duduk dengan nyaman dekat orang ini.",
+    "Saya kadang-kadang berpikir orang ini kesepian.",
     "Saya anggap orang ini sering mementingkan dirinya sendiri.",
     "Orang ini seringkali mengatakan kepada saya, bahwa saya melakukan sesuatu dengan baik.",
     "Seringkali saya sependapat dengan apa yang dikatakan orang ini.",
@@ -34,9 +35,9 @@ let q = [
     "Saya harus menyampaikan berkali-kali sebelum orang ini mendengarkan saya.",
     "Saya melakukan apa yang diinginkan orang ini.",
     "Saya sering merasa puas saat bersama-sama dengan orang ini."
-];
+  ];
 
-let negativeQuestions = [2, 7, 9, 15, 20, 24, 29]; // List of negative question indices
+let negativeQuestions = [2, 8, 11, 15, 20, 24, 29]; // List of negative question indices
 
 function reverseScore(score) {
     return 6 - score;
