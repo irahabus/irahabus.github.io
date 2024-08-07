@@ -3,8 +3,8 @@ import * as path from 'path';
 import csvParser from 'csv-parser'; // Change to default import
 import * as csvWriter from 'csv-writer';
 
-const inputDir = './csv-files'; // The directory containing the CSV files
-const outputFile = 'combined.csv';
+const inputDir = './SD Campuran'; // The directory containing the CSV files
+const outputFile = 'combined-SD Campuran.csv';
 
 interface Record {
   [key: string]: string;

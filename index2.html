@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="s.css" media="screen" />
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <title>
+        Kuesioner
+    </title>
+    <script src="a2.js"></script>
+    <style>
+        body {
+			font-family: Arial, sans-serif;
+			line-height: 1.6;
+			color: #333;
+			background-color: #ffffff;
+			padding: 20px;
+		}
+		
+		h1, h3 {
+			color: #444;
+		}
+		
+		.instruction-container {
+			display: block;
+			margin: 20px auto;
+			padding: 20px;
+			width: 75%;
+			background-color: #fff;
+			border: 1px solid #ddd;
+			border-radius: 10px;
+			text-align: left;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+		
+		.instruction-container h3 {
+			text-align: center;
+			color: #333;
+			margin-bottom: 15px;
+		}
+		
+		.instruction-container video {
+			display: block;
+			margin: 15px auto;
+			width: 40%; /* Reduce the width to 40% for 2/3 smaller size */
+			height: auto;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+		}
+		
+		.instruction-container p {
+			text-align: justify;
+			line-height: 1.5;
+			font-size: 14px;
+			margin-bottom: 10px;
+		}
+		
+		.instruction-container input[type="button"] {
+			display: block;
+			margin: 20px auto;
+			padding: 10px 20px;
+			font-size: 16px;
+			background-color: #007bff;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+		
+		.instruction-container input[type="button"]:hover {
+			background-color: #0056b3;
+		}
+		
+		table {
+			width: 100%;
+			max-width: 600px;
+			margin: 0 auto 20px;
+			border-collapse: collapse;
+		}
+		
+		td {
+			padding: 10px;
+			text-align: left;
+		}
+		
+		input[type="text"], select {
+			width: 100%;
+			padding: 8px;
+			margin: 5px 0;
+			box-sizing: border-box;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+		
+		input[type="submit"] {
+			display: inline-block;
+			padding: 10px 20px;
+			margin: 10px 5px;
+			font-size: 16px;
+			background-color: #28a745;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+		
+		input[type="submit"]:hover {
+			background-color: #218838;
+		}
+		
+		.center {
+			text-align: center;
+		}
+		
+		.center img {
+			margin: 5px;
+		}
+		
+		#timer {
+			font-size: 14px;
+			color: #666;
+			text-align: center;
+			margin-top: 10px;
+		}		
+    </style>
+</head>
+
+<body>
+    <audio id="suara_instruksi" src="instruksi.mp3" autostart></audio>
+    <div id="main">
+        <div id="formnama">
+            <h1>Masukkan data pengisi kuesioner:</h1>
+            <table cellpadding="20" align="center">
+                <tr>
+                    <td text-align="left"><b>Nama:</b></td>
+                    <td text-align="left"><input id="nama" type="text" /></td>
+                </tr>
+                <tr>
+                    <td text-align="left"><b>Sekolah:</b></td>
+                    <td text-align="left"><input id="sekolah" type="text" /></td>
+                </tr>
+                <tr>
+                    <td text-align="left"><b>Kelas:</b></td>
+                    <td text-align="left"><input id="kelas" type="text" /></td>
+                </tr>
+                <tr>
+                    <td text-align="left"><b>Tanggal lahir:</b></td>
+                    <td text-align="left">
+                        <select name="dob-day" id="dob-day"></select>
+                        <select name="dob-month" id="dob-month"></select>
+                        <select name="dob-year" id="dob-year"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td text-align="left"><b>Jenis kelamin:</b></td>
+                    <td text-align="left">
+                        <input type="radio" id="jeniskelaminL" name="jeniskelamin" value="L"> Laki-Laki<br>
+                        <input type="radio" id="jeniskelaminP" name="jeniskelamin" value="P"> Perempuan<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td text-align="left"></td>
+                    <td text-align="left"><input type="submit" value="OK" onclick="displayInstruksi()" /></td>
+                </tr>
+            </table>
+            <br />
+        </div>
+        <div style="display:none" id="instruksi" class="instruction-container">
+			<h3>INSTRUKSI TES RELASI KELUARGA-BANDUNG VERSI KOMPUTER</h3>
+			<p>
+				- Saat ini, Kamu berpartisipasi dalam penelitian mengenai relasi dalam keluarga.
+				- Jawaban kamu akan terekam dalam komputer.
+				- Pertama-tama kamu diminta untuk memilih gambar yang paling menggambarkan Ayah dan ibu Kamu.
+				Gambar Ayah dan Ibu akan digunakan untuk membayangkan relasi Kamu dengan Ayah dan Ibu dalam pernyataan tertulis dan dibacakan.
+			</p>
+			<p>
+				- Contoh pernyataan tertulis adalah sebagai berikut : “Aku senang bermain dengan Orang Ini”. Yang dimaksud dengan “Orang Ini” adalah Ayah dan Ibu Kamu.
+			</p>
+			<p>
+				- Tugas kamu nanti adalah menandai termometer sesuai dengan jawaban kamu, terkait dengan relasinya dengan Ayah dan Ibu dengan cara menggeser mouse dari bagian tengah termometer ke atas atau ke bawah.
+			</p>
+			<p>
+				- Pilihan jawaban berkisar dari YA (bagian atas termometer) sampai dengan Tidak (bagian bawah termometer).
+			</p>
+			<p>
+				• Bila kamu menganggap pernyataan tersebut menggambarkan relasinya dengan Ayah atau Ibu, maka bisa menggerakkan mouse mulai dari titik tengah termometer sampai ujung atas thermometer (Ya). Berhenti lah pada posisi yang sesuai. Makin ke atas makin sesuai. Misalnya saat kamu senang bermain dengan Ayah dan Ibu kamu.
+			</p>
+			<p>
+				• Bila kamu menganggap pernyataan tersebut Tidak menggambarkan relasinya dengan Ayah atau Ibu, maka bisa menggerakkan mouse mulai dari titik tengah termometer sampai ujung bawah thermometer (Tidak). Berhentilah pada posisi yang sesuai. makin ke bawah makin tidak sesuai. Misalnya saat kamu tidak senang bermain dengan Ayah dan Ibu kamu.
+			</p>
+			<p>
+				• Bila kamu tidak dapat membuat keputusan mengenai pernyataan tersebut, maka tidak perlu menggeser mouse dan tempatkan di tengah thermometer.
+			</p>
+			<p>
+				- Setiap kali kamu selesai memberikan jawaban, kemudian klik tombol “SELANJUTNYA” untuk pengisian pernyataan berikutnya.
+				- Jika kamu ingin mengubah jawaban pernyataan sebelumnya maka klik tombol “SEBELUMNYA”
+				- Kamu baru berhenti ketika ada ucapan “TERIMA KASIH”
+				- Mari kita mulai dengan contoh
+				- Bila Kamu sudah siap, silahkan klik “MULAI”
+			</p>
+			<video id="vid" controls loop>
+				<source src="instruksi.mp4" type="video/mp4">
+				<source src="instruksi.webm" type="video/webm">
+				<source src="instruksi.ogv" type="video/ogg">
+				Your browser does not support the video tag.
+			</video>
+			<input type="button" onclick="setnama()" value="MULAI" />
+		</div>		
+
+        <div style="display:none" id="pilih_L">
+            <h1>Instruksi: Pilih salah satu gambar yang mirip dengan figur Ayah</h1><br />
+            <img width="150" height="350" onclick="setimg(0,1)" src="L/1.jpg">
+            <img width="150" height="350" onclick="setimg(0,2)" src="L/2.jpg">
+            <img width="150" height="350" onclick="setimg(0,3)" src="L/3.jpg">
+            <img width="150" height="350" onclick="setimg(0,4)" src="L/4.jpg">
+            <img width="150" height="350" onclick="setimg(0,5)" src="L/5.jpg">
+            <img width="150" height="350" onclick="setimg(0,6)" src="L/6.jpg">
+            <img width="150" height="350" onclick="setimg(0,7)" src="L/7.jpg"><br />
+            <img width="150" height="350" onclick="setimg(0,8)" src="L/8.jpg">
+            <img width="150" height="350" onclick="setimg(0,9)" src="L/9.jpg">
+            <img width="150" height="350" onclick="setimg(0,10)" src="L/10.jpg">
+            <img width="150" height="350" onclick="setimg(0,11)" src="L/11.jpg">
+            <img width="150" height="350" onclick="setimg(0,12)" src="L/12.jpg">
+            <img width="150" height="350" onclick="setimg(0,13)" src="L/13.jpg">
+            <img width="150" height="350" onclick="setimg(0,14)" src="L/14.jpg">
+        </div>
+        <div style="display:none" id="pilih_P">
+            <h1>Instruksi: Pilih salah satu gambar yang mirip dengan figur Ibu</h1> <br />
+            <img width="150" height="350" onclick="setimg(1,1)" src="P/1.jpg">
+            <img width="150" height="350" onclick="setimg(1,2)" src="P/2.jpg">
+            <img width="150" height="350" onclick="setimg(1,3)" src="P/3.jpg">
+            <img width="150" height="350" onclick="setimg(1,4)" src="P/4.jpg">
+            <img width="150" height="350" onclick="setimg(1,5)" src="P/5.jpg">
+            <img width="150" height="350" onclick="setimg(1,6)" src="P/6.jpg">
+            <img width="150" height="350" onclick="setimg(1,7)" src="P/7.jpg"><br />
+            <img width="150" height="350" onclick="setimg(1,8)" src="P/8.jpg">
+            <img width="150" height="350" onclick="setimg(1,9)" src="P/9.jpg">
+            <img width="150" height="350" onclick="setimg(1,10)" src="P/10.jpg">
+            <img width="150" height="350" onclick="setimg(1,11)" src="P/11.jpg">
+            <img width="150" height="350" onclick="setimg(1,12)" src="P/12.jpg">
+            <img width="150" height="350" onclick="setimg(1,13)" src="P/13.jpg">
+            <img width="150" height="350" onclick="setimg(1,14)" src="P/14.jpg">
+        </div>
+        <div style="display:none" id="postMilih">
+            <h5>
+                <div id="no_pertanyaan"></div>
+                <div id="pertanyaan"></div><br />
+            </h5>
+            <table class='center' cellpadding="10">
+                <tr>
+                    <td rowspan="3" text-align="center">
+                        <img id="L" width="150" height="350" style="display:none" src="asd/asd.jpg"></img>
+                    </td>
+                    <td align="center" text-align="center">
+                        <h5>Iya</h5>
+                    </td>
+                    <td align="center" text-align="center">
+                        <h5>Iya</h5>
+                    </td>
+                    <td align="center" rowspan="3" text-align="center">
+                        <img id="P" width="150" height="350" style="display:none" src="asd/asd.jpg"></img><br />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" text-align="center">
+                        <input type="range" id="Linput" orient="vertical" name="gender" min="1" max="5" value="3" />
+                    </td>
+                    <td align="center" text-align="center">
+                        <input type="range" id="Pinput" orient="vertical" name="gender2" min="1" max="5" value="3" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" text-align="center">
+                        <h5>Tidak</h5>
+                    </td>
+                    <td align="center" text-align="center">
+                        <h5>Tidak</h5>
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" value="Sebelumnya" onclick="previousVal()" />
+            <input type="submit" value="Selanjutnya" onclick="printVal()" />
+            <audio src="audio2/1.mp3" id="suara" autostart="false"></audio>
+        </div>
+        <div style="display:none" id="akhir">
+            <h1>TERIMA KASIH, anda telah menjawab semua pertanyaan. Silakan hubungi petugas.</h1>
+        </div>
+    </div>
+
+	<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const days = Array.from({ length: 31 }, (_, i) => `<option value="${String(i + 1).padStart(2, '0')}">${String(i + 1).padStart(2, '0')}</option>`).join('');
+            const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
+                .map((month, i) => `<option value="${String(i + 1).padStart(2, '0')}">${month}</option>`).join('');
+            const years = Array.from({ length: 115 }, (_, i) => 2023 - i).map(year => `<option value="${year}">${year}</option>`).join('');
+
+            document.getElementById('dob-day').innerHTML = `<option value="">Tanggal</option>${days}`;
+            document.getElementById('dob-month').innerHTML = `<option value="">Bulan</option>${months}`;
+            document.getElementById('dob-year').innerHTML = `<option value="">Tahun</option>${years}`;
+        });
+    </script>
+</body>
+
+</html>
