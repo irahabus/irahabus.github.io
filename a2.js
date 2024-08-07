@@ -37,7 +37,7 @@ let q = [
     "Saya sering merasa puas saat bersama-sama dengan orang ini."
   ];
 
-let negativeQuestions = [2, 8, 11, 15, 20, 24, 29]; // List of negative question indices
+let negativeQuestions = [2, 8, 12, 22, 30, 33]; // List of negative question indices
 
 function reverseScore(score) {
     return 6 - score;
