@@ -5,39 +5,36 @@ let q = [
     "Orang ini mengatakan bahwa saya benar-benar dapat menghibur hatinya",
     "Apabila saya pusing memikirkan sesuatu, maka saya akan pergi kepada orang ini",
     "Orang ini menganggap saya bersikap 'berlebihan'",
-    "Saya senang apabila orang ini memeluk/mencium saya",
     "Saya sangat ingin mengetahui apa yang dipikirkan atau dirasakan orang ini",
     "Kadang-kadang sulit bagi saya untuk menyukai orang ini",
-    "Orang ini dan saya memiliki kesamaan tentang hal-hal yang kami anggap bagus",
     "Saya senang apabila saya dapat duduk dengan nyaman dekat orang ini",
     "Saya anggap orang ini sering mementingkan dirinya sendiri",
+    "Orang ini seringkali mengatakan kepada saya, bahwa saya melakukan sesuatu dengan baik",
     "Seringkali saya sependapat dengan apa yang dikatakan orang ini",
     "Orang ini merasa malu tentang diri saya",
     "Saya berpendapat orang ini senang kalau saya memeluknya/menciumnya",
-    "Orang ini mengatakan bahwa saya dapat menolongnya dengan baik",
     "Saya sering bersenang-senang dengan orang ini",
+    "Orang ini sering menguasai saya",
     "Saya senang apabila orang ini berada dekat saya",
     "Saya membantu orang ini ketika dia bertengkar dengan seseorang dirumah",
     "Saya pikir orang ini harus lebih banyak melakukan hal-hal yang menyenangkan bersama saya",
     "Orang ini bangga akan diri saya",
-    "Orang ini dan saya sering punya pikiran yang sama",
     "Kadang-kadang saya begitu marah, sehingga ingin pergi jauh dari orang ini",
     "Saya pikir, kadang-kadang saya sangat membutuhkan orang ini",
     "Saya sering merasa bersalah dalam keberadaan/kehadiran orang ini",
-    "Ketika saya menjanjikan sesuatu pada orang ini maka saya juga akan menepatinya",
-    "Orang ini senang apabila saya menolong dia dalam segala hal",
-    "Orang ini berpikir saya harus berusaha lebih keras di sekolah",
     "Saya senang tidur bersama orang ini",
     "Saya merasa kasihan pada orang ini",
     "Saya kadang-kadang menolak melakukan sesuatu yang diminta orang ini",
     "Orang ini membutuhkan saya",
     "Saya senang bermain dengan orang ini",
+    "Orang ini selalu mengatakan apa yang harus saya lakukan",
+    "Orang ini selalu ingin saya makan yang baik",
     "Saya harus menyampaikan berkali-kali sebelum orang ini mendengarkan saya",
     "Saya melakukan apa yang diinginkan orang ini",
     "Saya sering merasa puas saat bersama-sama dengan orang ini"
 ];
 
-let negativeQuestions = [3, 8, 12, 18, 29, 38, 43]; // Updated list of negative question indices
+let negativeQuestions = [2, 7, 9, 15, 20, 24, 29]; // List of negative question indices
 
 function reverseScore(score) {
     return 6 - score;
